@@ -44,6 +44,10 @@ def select(fuction_code):
     #Prints items
     elif function_code == "P":
         list_all_items()
+    #Exits program
+    elif function_code == "Q":
+        print("Exiting program")
+        running = False
     #catch all
     else:
         print("Error, Unknown command" + user_input)
@@ -67,3 +71,19 @@ def test():
 
 #runs test
 test()
+
+running = True
+while running:
+    selection = user_input(
+        "Press C to add list, R to read list, and P to display list. Or Q to quite.")
+    select(selection)
+
+#ToDO!
+#Add Read, update and destroy options to select func
+#Allow For user to use upper and lower case commands
+#Handle errors cuased by invalid user inputs
+
+#Stretch Challenges!
+#clear terminal between user selections
+#Add a function that checks and unchecks items in list
+#Display colored text in the terminal
