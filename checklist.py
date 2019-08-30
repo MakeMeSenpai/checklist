@@ -1,3 +1,6 @@
+import os
+import time
+
 # Create our Checklist
 checklist = []
 
@@ -31,25 +34,36 @@ def mark_completed(index):
     for list_item in checklist:
         print("√{} {}".format(index, list_item))
         index += 1
-def select(fuction_code):
+
+def select(function_code):
     #create item
-    if function_code == "C":
+    if function_code == "C" | function_code == "c":        
         item_index = user_input("Index Item: ")
-        create(input_item)
+        time.sleep(1)
+        os.system("clear")
+        create(user_input)
     # Read item
-    elif function_code == "R":
+    elif function_code == "R" | function_code == "r":
         item_index = user_input("Index Number? ")
         #Remebering item_index must exist
+        time.sleep(1)
+        os.system("clear")
         read(item_index)
     #Prints items
-    elif function_code == "P":
+    elif function_code == "P" | function_code == "p":
+        time.sleep(1)
+        os.system("clear")
         list_all_items()
     #Exits program
-    elif function_code == "Q":
+    elif function_code == "Q" | function_code == "q":
+        time.sleep(1)
+        os.system("clear")
         print("Exiting program")
         running = False
     #catch all
     else:
+        time.sleep(1)
+        os.system("clear")
         print("Error, Unknown command" + user_input)
 
 def user_input(prompt):
@@ -79,11 +93,15 @@ while running:
     select(selection)
 
 #ToDO!
-#Add Read, update and destroy options to select func
-#Allow For user to use upper and lower case commands
-#Handle errors cuased by invalid user inputs
+#Add Read, update and destroy options to select func 
+#Allow For user to use upper and lower case commands √
+#Handle errors cuased by invalid user inputs √
 
 #Stretch Challenges!
-#clear terminal between user selections
-#Add a function that checks and unchecks items in list
-#Display colored text in the terminal
+#clear terminal between user selections √
+#***Thanks to https://www.w3resource.com/python-exercises/python-basic-exercise-99.php for python clearing help! 
+#Add a function that checks and unchecks items in list 
+#Display colored text in the terminal 
+
+#And As Always
+#Improve your code!!
