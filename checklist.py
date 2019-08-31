@@ -3,7 +3,8 @@ import os
 import time
 
 # Create our Checklist
-checklist = []
+checklist = ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Purple"]
+    #clothes: ["Pants", "Shirt", "L-sock", "R-sock", "L-shoe", "R-shoe", "Cloak"] 
 
 # Define Functions
 def create(item):
@@ -16,13 +17,14 @@ def read(index):
 
 def update(index, item):
     # Update code here
-    index = colored('green')
-    item = colored('green')
+    #index = colored('green')
+    #item = colored('green')
     checklist[index] = item 
 
 def destroy(index):
     # Destroy code here
-    checklist.pop(index)
+    index_type = int(index)
+    checklist.pop(index_type)
 
 def list_all_items():
     # Code to list all items in list
@@ -33,7 +35,7 @@ def list_all_items():
 
 def mark_completed(index):
     #Adds marked items as complete
-    index = colored('blue')
+    #index = colored('blue')
     print(f"√{index}")
 
 def mark_incomplete(index):
@@ -42,8 +44,8 @@ def mark_incomplete(index):
 
 def select(function_code):
     #create item
-    if function_code == "C" or function_code == "c":        
-        item_index = user_input("Index Item: ")
+    if function_code == "C" or function_code == "c":       
+        item_index = user_input("Create Item: ")
         time.sleep(1)
         os.system("clear")
         create(user_input)
@@ -86,8 +88,8 @@ def select(function_code):
         mark_incomplete(item_index)
     #Exits program
     elif function_code == "Q" or function_code == "q":
-        _ = "Exiting Program"
-        _ = colored('red')
+        _ = "Exiting Program..."
+        #_ = colored('red')
         time.sleep(1)
         os.system("clear")
         print(_)
@@ -96,27 +98,12 @@ def select(function_code):
     else:
         time.sleep(1)
         os.system("clear")
-        print("Error, Unknown command" + user_input)
+        print(user_input)
 
 def user_input(prompt):
     #displays message in terminal for user reply
     user_input = input(prompt)
     return user_input
-
-def test():
-    # Your tests here
-    create("purple sox")
-    create("red cloak")
-    print(read(0))
-    print(read(1))
-    update(0, "purple socks")
-    destroy(1)
-    print(read(0))
-    print(read(1))
-    list_all_items()
-
-#runs test
-#test()
 
 running = True
 while running:
@@ -133,3 +120,10 @@ while running:
 #***Thanks to https://www.w3resource.com/python-exercises/python-basic-exercise-99.php for python clearing help! 
 #Add a function that checks and unchecks items in list √
 #Display colored text in the terminal √ ***Thx Tanner for the help!
+
+#Debug
+#Colors are being interpreted as strings
+#User_input cannot be interpreted as an integer when needed
+#checklist is printing "0 <function user_input at 0x100df8dd0>" instead of "0 <created_item>"
+#Q does not quite program due to var running being out of scope
+#Code simply places with list controls, and does not create the objective of a list that provides clothes and colors for captian rainbow
