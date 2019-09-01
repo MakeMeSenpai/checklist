@@ -1,4 +1,3 @@
-from termcolor import colored
 import os
 import time
 
@@ -19,12 +18,11 @@ def update(index, item):
     # Update code here
     #index = colored('green')
     #item = colored('green')
-    checklist[index] = item 
+    checklist[int(index)] = item 
 
 def destroy(index):
     # Destroy code here
-    index_type = int(index)
-    checklist.pop(index_type)
+    checklist.pop(int(index))
 
 def list_all_items():
     # Code to list all items in list
@@ -36,11 +34,11 @@ def list_all_items():
 def mark_completed(index):
     #Adds marked items as complete
     #index = colored('blue')
-    print(f"√{index}")
+    print(f"√{checklist[int(index)]}", 'blue')
 
 def mark_incomplete(index):
     #Adds marks items incomplete
-    print(f"{index}")
+    print(f"{checklist[int(index)]}")
 
 def select(function_code):
     #create item
@@ -49,6 +47,7 @@ def select(function_code):
         time.sleep(1)
         os.system("clear")
         create(user_input)
+        return True
     #Updates item
     if function_code == "U" or function_code == "u":
         item_index = user_input("Index Item: ")
@@ -56,12 +55,14 @@ def select(function_code):
         time.sleep(1)
         os.system("clear")
         update(item_index, new_item)
+        return True
     #Destroy items
     elif function_code == "D" or function_code == "d":
         item_index = user_input("Index Number? ")
         time.sleep(1)
         os.system("clear")
         checklist.pop(item_index)
+        return True
     # Read item
     elif function_code == "R" or function_code == "r":
         item_index = user_input("Index Number? ")
@@ -69,34 +70,36 @@ def select(function_code):
         time.sleep(1)
         os.system("clear")
         read(item_index)
+        return True
     #Prints items
     elif function_code == "P" or function_code == "p":
         time.sleep(1)
         os.system("clear")
         list_all_items()
+        return True
     #Marks Complete
     elif function_code == "X" or function_code == "x":
         item_index = user_input("Index Number? ")
         time.sleep(1)
         os.system("clear")
         mark_completed(item_index)
+        return True
     #Marks Incomplete
     elif function_code == "Z" or function_code == "z":
         item_index = user_input("Index Number? ")
         time.sleep(1)
         os.system("clear")
         mark_incomplete(item_index)
+        return True
     #Exits program
     elif function_code == "Q" or function_code == "q":
         _ = "Exiting Program..."
-        #_ = colored('red')
         time.sleep(1)
         os.system("clear")
-        print(_)
-        running = False
+        print('\033[31m' _ '\033[0m') #escape code
+        return False
     #catch all
     else:
-        time.sleep(1)
         os.system("clear")
         print(user_input)
 
@@ -104,12 +107,11 @@ def user_input(prompt):
     #displays message in terminal for user reply
     user_input = input(prompt)
     return user_input
-
 running = True
 while running:
     selection = user_input(
         "Press C to add list, U to update list, D to remove list, X to mark done, and Z to mark incomplete. You can also use R to read, P to display list or Q to quite. ")
-    select(selection)
+    running = select(selection)
 
 #ToDO!
 #Allow For user to use upper and lower case commands √
@@ -123,7 +125,5 @@ while running:
 
 #Debug
 #Colors are being interpreted as strings
-#User_input cannot be interpreted as an integer when needed
-#checklist is printing "0 <function user_input at 0x100df8dd0>" instead of "0 <created_item>"
-#Q does not quite program due to var running being out of scope
-#Code simply places with list controls, and does not create the objective of a list that provides clothes and colors for captian rainbow
+#checklist is printing "0 <function user_input at 0x100df8dd0>" instead of "0 <created_item>" √
+#Q does not quite program due to var running being out of scope √
