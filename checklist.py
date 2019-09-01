@@ -93,10 +93,10 @@ def select(function_code):
         return True
     #Exits program
     elif function_code == "Q" or function_code == "q":
-        _ = "Exiting Program..."
+        _ = "'\033[31m'Exiting Program...'\033[0m'"
         time.sleep(1)
         os.system("clear")
-        print('\033[31m' _ '\033[0m') #escape code
+        print(_) #escape code
         return False
     #catch all
     else:
