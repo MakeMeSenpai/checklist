@@ -43,33 +43,33 @@ def mark_incomplete(index):
 def select(function_code):
     #create item
     if function_code == "C" or function_code == "c":       
-        item_index = user_input("Create Item: ")
+        item = user_input("Create Item: ")
         time.sleep(1)
         os.system("clear")
         create(user_input)
         return True
     #Updates item
     if function_code == "U" or function_code == "u":
-        item_index = user_input("Index Item: ")
+        item = user_input("Index Item: ")
         new_item = user_input("New Item: ")
         time.sleep(1)
         os.system("clear")
-        update(item_index, new_item)
+        update(item, new_item)
         return True
     #Destroy items
     elif function_code == "D" or function_code == "d":
-        item_index = user_input("Index Number? ")
+        item = user_input("Index Number? ")
         time.sleep(1)
         os.system("clear")
-        checklist.pop(item_index)
+        checklist.pop(item)
         return True
     # Read item
     elif function_code == "R" or function_code == "r":
-        item_index = user_input("Index Number? ")
-        #Remebering item_index must exist
+        item = user_input("Index Number? ")
+        #Remebering item must exist
         time.sleep(1)
         os.system("clear")
-        read(item_index)
+        read(int(item))
         return True
     #Prints items
     elif function_code == "P" or function_code == "p":
@@ -79,17 +79,17 @@ def select(function_code):
         return True
     #Marks Complete
     elif function_code == "X" or function_code == "x":
-        item_index = user_input("Index Number? ")
+        item = user_input("Index Number? ")
         time.sleep(1)
         os.system("clear")
-        mark_completed(item_index)
+        mark_completed(item)
         return True
     #Marks Incomplete
     elif function_code == "Z" or function_code == "z":
-        item_index = user_input("Index Number? ")
+        item = user_input("Index Number? ")
         time.sleep(1)
         os.system("clear")
-        mark_incomplete(item_index)
+        mark_incomplete(item)
         return True
     #Exits program
     elif function_code == "Q" or function_code == "q":
@@ -107,6 +107,7 @@ def user_input(prompt):
     #displays message in terminal for user reply
     user_input = input(prompt)
     return user_input
+    
 running = True
 while running:
     selection = user_input(
