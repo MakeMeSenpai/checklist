@@ -7,4 +7,4 @@ This is a OOP and array coding challenge for making my first real CRUD applicati
 - Once this is found use 
 `$git clone https://github.com/MakeMeSenpai/checklist`
 to install the repo locally
-- `$python3 main.py`
+- `$python3 checklist.py`
